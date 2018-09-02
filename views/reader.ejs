@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<% include header %>
+<html lang="en">
+
+<body>
+<% include navbar %>
+<div class="container-fluid" style="margin-top:50px;">
+
+    <%if(result.rows[0]==undefined){%>
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">Title Not Found</h1>
+        <p class="lead blog-description">You have requested a book that is not in our library.</p>
+      </div></div>
+          <!-- Placed at the end of the document so the pages load faster -->
+
+<% } else {%>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title"><%=result.rows[0].title%></h1>
+        <p class="lead blog-description"><%=result.rows[0].author%></p>
+      </div> 
+
+      <div class="row">
+  <div class="col-sm-8 blog-main">
+
+          <div class="blog-post">
+			<p class="blog-post-meta" align="center">Page <%=pageid%></p>
+			<p class="blog-post-meta" align="center">Book number <%=bookid%></p>
+            <i><h3 class="blog-post-title"> <%=summary%></h2></i>
+            <p align="right"><i><a href="/reader/<%=bookid%>/<%=parseInt(pageid)+1%>" >&rarr;next page</a></i></p>
+
+            <% include page %>
+            <p align="right"><i><a href="/reader/<%=bookid%>/<%=parseInt(pageid)+1%>" >&rarr;next page</a></i></p>
+      </div><p align="center">      <a href="#" >Back to top</a></p>
+          <!-- /.blog-post -->       </div>
+<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+          <img src="http://cloud.copypastapublishing.com/babelli/covers/<%=bookid%>.jpg" class="resize_books">
+          </div>
+          <div class="sidebar-module">
+          <ul>
+          <%for (b=0;b<keywords.length;b++){%>          
+          <li><%=keywords[b]%></li><%}%>
+          </ul></div>
+          
+          <div class="sidebar-module">
+          <i><p><a href="/library/search/<%=result.rows[0].author.toLowerCase()%>/">Other books by this author</a></p></i>
+		</div>
+          
+ <!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+
+      
+
+        </div><!-- /.blog-main -->
+<%}%></div>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://google.com/article"
+  },
+  "headline": "<%=result.rows[0].title+" " + title%>",
+  "image":"http://cloud.copypastapublishing.com/babelli/covers/<%=bookid%>.jpg",
+  "datePublished": "2018-09-01T08:00:00+08:00",
+  "dateModified": "2018-09-01T08:22:00+08:00",
+  "pageStart":"<%=pageid%>",
+  "keywords":[<%for (b=0;b<keywords.length;b++){%>"<%=keywords[b]%>", <%}%> "copypasta"],
+  "author": {
+    "@type": "Person",
+    "name": "<%=result.rows[0].author%>"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Copypasta Publishing",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://www.copypastapublishing.com/images/lowerlogo.png"
+    }
+  },
+  "description": "<%=summary%>"
+}
+</script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+        src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  </body>
+</html>

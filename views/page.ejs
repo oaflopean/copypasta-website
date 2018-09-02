@@ -1,0 +1,16 @@
+<% if (pageid!='1'){%>
+<i><a href="/reader/<%=bookid%>/<%=parseInt(pageid)-1%>">&larr;previous page</a></i>
+<% }for (a=0; a<text.length;a++){
+	if (text[a].charAt(0)=="\""||text[a].charAt(0)=="'"){%>
+	<p><%=text[a]%></p>
+	<%}else if (text[a].trim().split(" ")[0].toLowerCase()=="chapter"){%>
+	<h3><%=text[a]%></h3>
+	<% } 	
+else if(text[a].trim().charAt(2)==','||text[a].trim().charAt(2)=='\''){
+	if (text[a].trim().charAt(3)==text[a].trim().charAt(3).toUpperCase()){%>
+	<h3><%=text[a]%></h3><%}}else if(text[a].trim().charAt(2)=='.'||text[a].trim().charAt(2)==' '){if(text[a].trim().charAt(1)==text[a].trim().charAt(1).toUpperCase()){%>
+	<h3><%=text[a]%></h3><%}}
+	else if(text[a].trim().charAt(2)==text[a].trim().charAt(2).toUpperCase()){%>
+	<h3><%=text[a]%></h3> <%}else{%>
+	<p><%=text[a]%></p><% }} %>
+

@@ -1,0 +1,9 @@
+pg-pool@2.0.3 node_modules\pg-pool
+
+pg@7.4.3 node_modules\pg
+├── packet-reader@0.3.1
+├── pg-connection-string@0.1.3
+├── buffer-writer@1.0.1
+├── semver@4.3.2
+├── pgpass@1.0.2 (split@1.0.1)
+└── pg-types@1.12.1 (postgres-bytea@1.0.0, postgres-array@1.0.2, postgres-date@1.0.3, postgres-interval@1.1.2)

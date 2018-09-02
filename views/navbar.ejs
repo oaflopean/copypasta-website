@@ -1,0 +1,32 @@
+
+<%
+function yourFunction(){
+    var action_src = "/library/search/" + document.getElementsById("search").value;
+    var your_form = document.getElementById('searchform');
+    your_form.action = action_src ;
+}
+%>
+<div class="navbar-wrapper " style="background-color: #4F474E;">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top " style="background-color: #4F474E;">
+          <div class="container " style="background-color: #4F474E;">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a  href="/"><img class="navbar-brand" src="http://www.copypastapublishing.com/images/lowerlogo.png" class="resize"/></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav pull-right">
+                    <li ><a href="/">Introduction</a>
+
+                    <li ><a href="/ten-minute-pitch">Submission Guidelines</a>
+                    <li> <form id='searchform'onsubmit="this.action='/library/search/'+search.value+'/';"><input type="text" placeholder="Search library" id="search" >              <button type="submit" class="btn btn-dark">Search for ebooks</button></form>
+                    </li>
+              </ul>
+            </div>
+          </div></div>
+        </nav>
